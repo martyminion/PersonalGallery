@@ -11,20 +11,24 @@ class ImageTest(TestCase):
     '''
     This function runs at the beginning of every test
     '''
-    #image
-    new_image = Image(image_url = "path/to/imag", name = "Dubai Mall", description = "A lively night out",
-        locations = "Dubai", categories = "Travel", tags = "food")
+    
+   
     #tags
-    new_tag = Tags(name = "food")
+    self.new_tag = Tags(name = "food")
+    
     #categories
-    new_category = Category(name = "Travel")
+    self.new_category = Category(name = "Travel")
     #location
-    new_location = Location(city = "Dubai", country = "UAE", specific_locale = "Dubai Mall Waterfront")
-
-    new_location.save()
-    new_category.save()
-    new_tag.save()
-    new_image.save()
+    self.new_location = Location(city = "Dubai", country = "UAE", specific_locale = "Dubai Mall Waterfront")
+    #image
+    self.new_image = Image(image_url = "path/to/imag", name = "Dubai Mall", description = "A lively night out",locations = self.new_location , categories = self.new_category)
+        
+   
+    self.new_location.save()
+    self.new_category.save()
+    self.new_tag.save()
+    self.new_image.save()
+    self.new_image.tags.add(self.new_tag)
 
   '''
   Tests
@@ -36,7 +40,7 @@ class ImageTest(TestCase):
     '''
     self.assertTrue(isinstance(self.new_image,Image))
 
-  def test_get_image_by_id(self,id):
+  def test_get_image_by_id(self):
     '''
     Test to check if function can return correct data
     '''

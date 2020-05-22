@@ -99,7 +99,7 @@ class Image(models.Model):
     This function return a single image using its id
     '''
     try:
-      new_img = cls.objects.filter_by(id = id)
+      new_img = cls.objects.get(id = id)
       return new_img
     except ObjectDoesNotExist:
       message = "Image does not exist"
@@ -145,7 +145,7 @@ class Image(models.Model):
     this function returns images based on the location
     '''
     try:
-      images_by_location = cls.objects.filter_by(location = location).all()
+      images_by_location = cls.objects.filter(location__icontains = location).all()
       return images_by_location
     except ObjectDoesNotExist:
       message = "There are no images from that location"
