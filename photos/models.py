@@ -25,8 +25,15 @@ class Location(models.Model):
     '''
     return self.name
 
-  def delete_category(self):
+  def delete_location(self):
     self.delete()
+
+  def update_location(self,new_locale):
+    '''
+    This function updates the category name
+    '''
+    Location.objects.filter(id = self.id).update(specific_locale = new_locale)
+
 
 class Category(models.Model):
   '''
@@ -44,12 +51,21 @@ class Category(models.Model):
 
   def save_category(self):
     '''
-    This function adds an image into the database
+    This function adds a new category into the database
     '''
     self.save()
 
   def delete_category(self):
+    '''
+    This function deletes a category from the database
+    '''
     self.delete()
+
+  def update_category(self,new_name):
+    '''
+    This function updates the category name
+    '''
+    Category.objects.filter(id = self.id).update(name = new_name)
 
 class Tags(models.Model):
   '''
@@ -67,12 +83,22 @@ class Tags(models.Model):
 
   def save_tag(self):
     '''
-    This function adds an image into the database
+    This function adds a tag into the database
     '''
     self.save()
 
-  def delete_category(self):
+  def delete_tag(self):
+    '''
+    This function deletes a tag from the database
+    '''
     self.delete()
+
+  def update_tag(self,new_name):
+    '''
+    This function updates the tag name
+    '''
+    Tags.objects.filter(id = self.id).update(name = new_name)
+
 
 class Image(models.Model):
   '''
@@ -112,22 +138,16 @@ class Image(models.Model):
     '''
     self.save()
 
-  @classmethod
-  def delete_image(cls,id):
+ 
+  def delete_image(self):
     '''
     This function deletes an image from the data base
     '''
-    image_delete = cls.get_image_by_id(id=id)
-    if image_delete == "Image does not exist":
-      message = "Image does not exist"
-      return message
-    else:
-      image_delete.delete()
-      message = "Successfull deletion"
-      return message
+    self.delete()
+   
 
   @classmethod
-  def update_image_location(cls,id,new_description):
+  def update_image_description(cls,id,new_description):
     '''
     this functions updates the location of the image
     '''
@@ -136,7 +156,7 @@ class Image(models.Model):
       message = "Image does not exist"
       return message
     else:
-      image_update.update(description = new_description)
+      Image.objects.filter(id=id).update(description = new_description)
       message = "Successfull update"
       return message
   @classmethod
@@ -145,7 +165,7 @@ class Image(models.Model):
     this function returns images based on the location
     '''
     try:
-      images_by_location = cls.objects.filter(location__icontains = location).all()
+      images_by_location = cls.objects.filter(locations = location).all()
       return images_by_location
     except ObjectDoesNotExist:
       message = "There are no images from that location"
@@ -157,7 +177,16 @@ class Image(models.Model):
   @classmethod
   def search_by_category(cls,search_term):
     try:
-      searched_images = cls.objects.filter(tags__icontains = search_term)
+      searched_images = cls.objects.filter(categories = search_term)
+      return searched_images
+    except ObjectDoesNotExist:
+      message = "We could not find any photos of that category"
+      return message
+
+  @classmethod
+  def search_by_tags(cls,search_term):
+    try:
+      searched_images = cls.objects.filter(tags = search_term)
       return searched_images
     except ObjectDoesNotExist:
       message = "We could not find any photos with that tag"
