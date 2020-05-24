@@ -1,29 +1,33 @@
 {%load bootstrap4%}
+{%load static%}
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
 
-    {%if title %}
-    <title>Life in Pictures: {{title}}</title>
-    {%else%}
-    <title>Life in Pictures</title>
-    {%endif%}
+<head>
+  <meta charset="utf-8">
 
-    {%block styles%}
-      {% bootstrap_css %}
-    {%endblock%}
+  {%if title %}
+  <title>Life in Pictures: {{title}}</title>
+  {%else%}
+  <title>Life in Pictures</title>
+  {%endif%}
 
-  </head>
-  <body>
-    
-    {%block content%}
-    {%include 'navbar.html'%}
- 
-    {%endblock%}
-    {%block scripts%}
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      {%bootstrap_javascript%}
-    {%endblock%}
-  </body>
+  {%block styles%}
+  {% bootstrap_css %}
+  {%endblock%}
+
+</head>
+
+<body>
+
+  {%block content%}
+  {%include 'navbar.html'%}
+
+  {%endblock%}
+  {%block scripts%}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  {%bootstrap_javascript%}
+  {%endblock%}
+</body>
+
 </html>

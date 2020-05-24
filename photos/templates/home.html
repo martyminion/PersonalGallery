@@ -1,14 +1,22 @@
 {%extends 'base.html'%}
+{%load static%}
 
+
+{%block styles%}
+{{block.super}}
+<link rel="stylesheet" href="{% static 'css/home.css'%}">
+{%endblock%}
 {%block content%}
 {{block.super}}
-  <div class="container">
-   <div class="col-md-4">
-     {%for image in images%}
-     <img src="{{image.picha_image.url}}" alt="image.name" width="100" height="100">
-     {%endfor%}
-   </div>
+<div class="container">
+  <h1 class="titles">Jambo</h1>
+  <div class="boxes row">
+      {%for image in images%}
+      <div class="col-md-4 col-lg-3 col-xs-6 box-item">
+        <img src="{{image.picha_image.url}}" alt="image.name" class="imagesize">
+      </div>
+      <a href="{%url 'copyUrl' image.id %}" id="copyimg">Share</a>
+      {%endfor%}
   </div>
+</div>
 {%endblock%}
-
-

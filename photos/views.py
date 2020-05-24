@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import Image,Tags,Category,Location
-
+import pyperclip
+from django.views.decorators.clickjacking import xframe_options_sameorigin
 # Create your views here.
 
 def homepage(request):
@@ -37,5 +38,15 @@ def search_tags(request):
   else:
     message = "You haven't searched for any images"
     return render(request,'search_results.html',{"message":message,"title":title})  
-  
     
+
+def copy_image_url(request,imageid):
+  '''
+  copies the image url
+  '''
+  copyimage = Image.get_image_by_id(imageid)
+  image_url = copyimage.copy_imageurl()
+  pyperclip.copy(image_url)
+  return redirect('/')
+  
+  

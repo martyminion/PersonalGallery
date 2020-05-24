@@ -192,3 +192,10 @@ class Image(models.Model):
     except ObjectDoesNotExist:
       message = "We could not find any photos with that tag"
       return message
+
+  def copy_imageurl(self):
+    '''
+    copies the image url to the clip board
+    '''
+    image_copy_url = self.picha_image.url
+    return image_copy_url
