@@ -3,14 +3,11 @@
 {%block content%}
 {{block.super}}
   <div class="container">
-    <h1 class="text-center">we have began</h1>
-    <p>sjdsajdhjsajkdkjsadlsa
-      asdaskdsadkjaskdnm
-      asdkasdkjasldnlksa
-      asnfkjsadhlksalkd
-      kjasdlsalkfhjhlvnuihsa 
-      asfaskfksajfksa
-    </p>
+   <div class="col-md-4">
+     {%for image in images%}
+     <img src="{{image.picha_image.url}}" alt="image.name">
+     {%endfor%}
+   </div>
   </div>
 {%endblock%}
 

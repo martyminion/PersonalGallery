@@ -23,7 +23,7 @@ class Location(models.Model):
     the object instance of the class and getting Location 1 you'll instead get the 
     spsecified return value
     '''
-    return self.name
+    return self.city
 
   def delete_location(self):
     self.delete()
@@ -110,6 +110,7 @@ class Image(models.Model):
   locations = models.ForeignKey(Location, on_delete = models.CASCADE)
   categories = models.ForeignKey(Category, on_delete = models.CASCADE)
   tags = models.ManyToManyField(Tags)
+  picha_image = models.ImageField(upload_to='photos/')
 
   def __str__(self):
     '''

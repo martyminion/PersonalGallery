@@ -12,3 +12,4 @@ def homepage(request):
   most_images = Image.objects.order_by('id').all()[:10]
   
   return render(request,'home.html',{"title":title,"images":most_images})
+
