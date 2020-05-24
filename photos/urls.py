@@ -7,6 +7,8 @@ urlpatterns = [
   path('',views.homepage, name='homePage'),
   path('search/tags',views.search_tags,name='searchTags'),
   path('copy/image/<int:imageid>',views.copy_image_url,name='copyUrl'),
+  path('locations/',views.location,name='locations'),
+  path('categories/',views.categories, name='categories')
 
 ]
 if settings.DEBUG:

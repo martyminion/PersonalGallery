@@ -48,5 +48,34 @@ def copy_image_url(request,imageid):
   image_url = copyimage.copy_imageurl()
   pyperclip.copy(image_url)
   return redirect('/')
+
+def location(request):
+  '''
+  this view function shows all the availale locations
+  '''
+  title = "locations"
+  return render(request,'locations.html',{"title":title}) 
+
+def categories(request):
+  '''
+  this view function shows all te available categories
+  '''
+  title = "categories"
+  return render(request,'categories.html',{"title":title})
   
+
+def show_category_images(request,cat_name):
+  '''
+  this function displays the images from a particular category
+  '''
+  title = cat_name
+  cat_results = Image.search_by_category(cat_name)
+
+def show_location_images(request,loc_name):
+  '''
+  this function displays the images from a particular location
+  '''
+  title = loc_name
+  loc_results = Image.image_by_location(loc_name)
+
   
