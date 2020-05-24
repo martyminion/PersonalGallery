@@ -54,14 +54,16 @@ def location(request):
   this view function shows all the availale locations
   '''
   title = "locations"
-  return render(request,'locations.html',{"title":title}) 
+  all_locations = Location.objects.all()
+  return render(request,'locations.html',{"title":title,"all_locations"=all_locations}) 
 
 def categories(request):
   '''
   this view function shows all te available categories
   '''
   title = "categories"
-  return render(request,'categories.html',{"title":title})
+  all_categories = Category.objects.all()
+  return render(request,'categories.html',{"title":title,"all_categories"=all_categories})
   
 
 def show_category_images(request,cat_name):
