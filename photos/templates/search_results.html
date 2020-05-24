@@ -5,9 +5,13 @@
   <div class="container">
     <h2>"Search results for {{search_term}}"</h2>
    <div class="col-md-4">
+     {%if search_results%}
      {%for search_result in search_results%}
      <img src="{{search_result.picha_image.url}}" alt="image.name">
      {%endfor%}
+     {%else%}
+     <p>{{message}}</p>
+     {%endif%}
    </div>
   </div>
 {%endblock%}
