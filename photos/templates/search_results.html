@@ -2,16 +2,49 @@
 
 {%block content%}
 {{block.super}}
-  <div class="container">
-    <h2>"Search results for {{search_term}}"</h2>
-   <div class="col-md-4">
-     {%if search_results%}
-     {%for search_result in search_results%}
-     <img src="{{search_result.picha_image.url}}" alt="image.name">
-     {%endfor%}
-     {%else%}
-     <p>{{message}}</p>
-     {%endif%}
-   </div>
+<div class="container">
+  <h2>"Search results for {{search_term}}"</h2>
+  <div class="col-md-4">
+    {%if search_results%}
+    {%for search_result in search_results%}
+    <img src="{{search_result.picha_image.url}}" alt="image.name">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ScrollableModal">
+      Expand
+    </button>
+    <!-- Modal -->
+  <div class="modal fade" id="ScrollableModal" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalScrollableTitle">{{search_result.name}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img src="{{search_result.picha_image.url}}" alt="image.name">
+        <p>{{search_result.description}}</p>
+        <p>{{search_result.categories}}</p>
+        <p>{{search_result.locations.specific_locale}}</p>
+        <p>{{search_result.locations}},{{search_result.locations.country}}</p> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
   </div>
+</div>
+    {%endfor%}
+    {%else%}
+    <p>{{message}}</p>
+    {%endif%}
+  </div>
+  
+  
+
+  
+</div>
 {%endblock%}
