@@ -10,7 +10,7 @@ def homepage(request):
   This view function will show a random display of images from the database
   '''
   title = "Home"
-  most_images = Image.objects.order_by('-id').all()[:10]
+  most_images = Image.objects.order_by('-id').all()[:12]
   
   return render(request,'home.html',{"title":title,"images":most_images})
 

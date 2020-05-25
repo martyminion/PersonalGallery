@@ -7,6 +7,7 @@ function showModal(imgname,imgdesc,imgurl,imglocsp,imglocct,imgloccntry,imgcat){
   $("#imgmdlocationspecifc").text("Location: " + imglocsp)
   $("#imgmdlocation").text(imglocct+","+imgloccntry)
   $("#imgmdcategory").text("Category: " + imgcat)
+  $("#copy_image_url").val(window.location.origin + imgurl)
 }
 
 function copy(){
