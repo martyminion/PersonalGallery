@@ -13,8 +13,8 @@
     {%for image in images%}
     <div class="grid_item col-md-4 col-xs-6 col-sm-6 col-lg-3">
       <img onclick="showModal('{{image.name}}','{{image.description}}','{{image.picha_image.url}}','{{image.locations.specific_locale}}','{{image.locations.city}}','{{image.locations.country}}','{{image.categories.name}}')"
-      class="image img-responsive" src="{{image.picha_image.url}}"><br>
-      <a class="btn " href="{%url 'copyUrl' image.id %}" id="copyimg">Copy Image Url</a>
+      class="image img-responsive box" src="{{image.picha_image.url}}">
+      <a class="btn " href="{%url 'copyUrl' image.id %}" id="copyimg" onclick="copy()">Copy</a>
     </div>
     {%endfor%}
   </div>

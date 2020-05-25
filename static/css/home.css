@@ -4,13 +4,16 @@ img{
   max-height: 100%;
   vertical-align: middle;
 }
-.box_item{
+.box{
+
  margin: 5px;
+ border: 1px black solid;
+ padding: 7px;
 }
-.griditem{
+/* .griditem{
   width: 200px;
   
-}
+} */
 .grid{
   margin-top: 70px;
 }
