@@ -1,12 +1,11 @@
 # Life in Picture
 
-This is python Web app made with the Django froma work that enables the user to upload imags as they see fir according to the classifications
-and have other people view them. you are also able to copy an image url that you can shareon other platforms
+This is python Web app made with the Django froma work that enables the user to upload images as they see fit. Classification is based on category and location.Other people can view them and are also able to copy an image url which can be shared on other platforms.
 
 ### User Stories:
 1. View different photos that interest me.
 1. Click on a single photo to expand it and also view the details of the photo. The photo details must appear on a modal within the same route as the main page.
-1. Search for different categories of photos. (ie. Travel, Food)
+1. Search for different categories of photos. (e.g. Travel, Food)
 1. Copy a link to the photo to share with my friends.
 1. View photos based on the location they were taken.
 
@@ -52,8 +51,8 @@ $ pip install psycopg2
 ### .ENV file
 1. SECRET_KEY='<SECRET_KEY>'
 1. DEBUG=True #set to false in production
-1. DB_NAME='tribune'
-1. DB_USER='user'
+1. DB_NAME='databasename'
+1. DB_USER='username'
 1. DB_PASSWORD='password'
 1. DB_HOST='127.0.0.1'
 1. MODE='dev' #set to 'prod' in production
@@ -78,15 +77,17 @@ $ pip install psycopg2
 
 ### Break down into end to end tests
 ### Example
-  `def test_delete_image(self):`
-    `'''`
-    `tests if an image instance is deleted`
-    `'''`
-    `image_2 = Image(image_url = "path/to/images/new", name = "The Genting", description = "A family day",locations = self.new_location , categories = self.new_category)`
-    `image_2.save_image()`
-    `image_2.delete_image()`
-    `result=Image.get_image_by_id(id = image_2.id)`
-    `self.assertEqual(result,"Image does not exist")`
+  ```
+    def test_delete_image(self):
+    '''
+    tests if an image instance is deleted
+    '''
+    image_2 = Image(image_url = "path/to/images/new", name = "The Genting", description = "A family day",locations = self.new_location , categories = self.new_category)
+    image_2.save_image()
+    image_2.delete_image()
+    result=Image.get_image_by_id(id = image_2.id)
+    self.assertEqual(result,"Image does not exist")
+  ```
 * The above test checks whether the delete method works and confirms that on look up it is not there  
 
 ## Bugs
@@ -95,7 +96,7 @@ $ pip install psycopg2
 ## Deployment
 
 The app can be found live on heroku: https://lifeinpicture.herokuapp.com/
-
+Refresh the page for Masonry Grid to take good effect
 
 ## Built With
 
@@ -104,15 +105,12 @@ The app can be found live on heroku: https://lifeinpicture.herokuapp.com/
 * JavaScript and JQuery
 * HTML and CSS
 
-
-
 ## Authors
 
 * **Martin Kimani** 
 
-
 ## License
 
 This project is licensed under the GNU License - see the [LICENSE.md](LICENSE.md) file for details
-
+Copyright{ 2020 }
 
