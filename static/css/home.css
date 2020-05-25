@@ -38,5 +38,29 @@ button{
 }
 .navlink{
   font-family: 'Pacifico', cursive;
-  font-size: 20px;
+  font-size: 25px;
+}
+.card-body{
+  font-family: 'Piedra', cursive;
+  margin: 20px;
+  
+}
+.row{
+  margin: 10px;
+  border-top: 10px;
+}
+.col{
+  border-top: 10px;
+}
+
+.card{
+  margin-top: 15px;
+}
+
+footer{
+  font-family: 'Pacifico', cursive;
+  font-size: 25px;
+}
+body{
+  background-color: rgba(91, 211, 145, 0.288) ;
 }

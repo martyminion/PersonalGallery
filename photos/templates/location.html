@@ -4,16 +4,18 @@
 {{block.super}}
 <div class="container">
   <div class="row">
-
     {%for location in all_locations%}
-    <div class="col-md-6 col-lg-6 col-xs-6 col-sm-6">
-      <a href="{%url 'locationImages' location.id%}"><h2>{{location.city}}</h2></a>
-      <h3>{{locaion.country}}</h3>
-      <h4>{{location.specific_locale}}</h4>
+    <div class="col-md-6 col-lg-6 col-xs-6 col-sm-6 card-deck">
+      <div class="card ">
+        <div class="card-body">
+          <a href="{%url 'locationImages' location.id%}">
+            <h2>{{location.city}}</h2>
+          </a>
+          <h3>{{locaion.country}}</h3>
+          <h4>{{location.specific_locale}}</h4>
+        </div>
+      </div>
     </div>
     {%endfor%}
-
   </div>
-
-</div>
-{%endblock%}
+  {%endblock%}
