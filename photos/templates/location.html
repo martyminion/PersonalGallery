@@ -1,12 +1,13 @@
 {%extends 'base.html'%}
 
 {%block content%}
+{{block.super}}
 <div class="container">
   <div class="row">
 
     {%for location in all_locations%}
-    <div class=" =col-md-6 col-">
-      <h2>{{location.city}}</h2>
+    <div class="col-md-6 col-lg-6 col-xs-6 col-sm-6">
+      <a href="{%url 'locationImages' location.id%}"><h2>{{location.city}}</h2></a>
       <h3>{{locaion.country}}</h3>
       <h4>{{location.specific_locale}}</h4>
     </div>

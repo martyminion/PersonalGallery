@@ -55,7 +55,7 @@ def location(request):
   '''
   title = "locations"
   all_locations = Location.objects.all()
-  return render(request,'locations.html',{"title":title,"all_locations"=all_locations}) 
+  return render(request,'location.html',{"title":title,"all_locations":all_locations}) 
 
 def categories(request):
   '''
@@ -63,7 +63,7 @@ def categories(request):
   '''
   title = "categories"
   all_categories = Category.objects.all()
-  return render(request,'categories.html',{"title":title,"all_categories"=all_categories})
+  return render(request,'categories.html',{"title":title,"all_categories":all_categories})
   
 
 def show_category_images(request,cat_name):
@@ -72,6 +72,7 @@ def show_category_images(request,cat_name):
   '''
   title = cat_name
   cat_results = Image.search_by_category(cat_name)
+  return render(request,'imagescatloc.html',{"title":title,"results":cat_results})
 
 def show_location_images(request,loc_name):
   '''
@@ -79,5 +80,6 @@ def show_location_images(request,loc_name):
   '''
   title = loc_name
   loc_results = Image.image_by_location(loc_name)
+  return render(request,'imagescatloc.html',{"title":title,"results":loc_results})
 
   
