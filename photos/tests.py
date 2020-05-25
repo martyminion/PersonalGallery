@@ -3,7 +3,6 @@ from .models import Location,Tags,Category,Image
 from django.core.exceptions import ObjectDoesNotExist
 
 # Create your tests here.
-
 class ImageTest(TestCase):
   '''
   This class defines the test cases for the Image model
@@ -19,8 +18,7 @@ class ImageTest(TestCase):
     #location
     self.new_location = Location(city = "Dubai", country = "UAE", specific_locale = "Dubai Mall Waterfront")
     #image
-    self.new_image = Image(image_url = "path/to/imag", name = "Dubai Mall", description = "A lively night out",locations = self.new_location , categories = self.new_category)
-        
+    self.new_image = Image(image_url = "path/to/imag", name = "Dubai Mall", description = "A lively night out",locations = self.new_location , categories = self.new_category)        
     self.new_location.save()
     self.new_category.save()
     self.new_tag.save()
@@ -30,7 +28,6 @@ class ImageTest(TestCase):
   '''
   Tests
   '''
-
   def test_instance(self):
     '''
     Test to see if instantiation was correct
@@ -50,9 +47,7 @@ class ImageTest(TestCase):
     test to chack if an image is saved in the database
     '''
     new_image2 = Image(image_url = "path/to/new/imag", name = "Genting Highlands Mall", description = "A day in the lagoon",locations = self.new_location , categories = self.new_category)
-    
     new_image2.save_image()
-
     self.assertTrue(len(Image.objects.all())>1)
   
   def test_update_image_description(self):
@@ -65,7 +60,6 @@ class ImageTest(TestCase):
     new_image2.save_image()
     Image.update_image_description(self.new_image.id,new_descr)
     new_im = Image.get_image_by_id(self.new_image.id)
-
     self.assertEqual(new_im.description,"Family above all")
     
   def test_image_by_location(self):
@@ -99,12 +93,12 @@ class ImageTest(TestCase):
     image_2 = Image(image_url = "path/to/images/new", name = "The Genting", description = "A family day",locations = self.new_location , categories = self.new_category)
     image_2.save_image()
     image_2.delete_image()
-
     result=Image.get_image_by_id(id = image_2.id)
     self.assertEqual(result,"Image does not exist")
 
-    #self.assertTrue(Image.objects.all()==0)
-
+'''
+Tests on Category Model
+'''
 class CategoryTest(TestCase):
   '''
   This class defines the test cases for the Category model
@@ -142,7 +136,9 @@ class CategoryTest(TestCase):
     self.new_category2.update_category("Booze")
     new_booze = Category.objects.get(name = "Booze")
     self.assertEqual(new_booze.name,"Booze")
-
+'''
+Tests on Location Model
+'''
 class LocationTest(TestCase):
   '''
   This class defines the test cases for the Category model
@@ -152,6 +148,7 @@ class LocationTest(TestCase):
     this function runs at the beginning of each test
     '''
     self.new_location2 = Location(city = "Nairobi", country = "Kenya", specific_locale = "Waterefrom Karen")
+    
   def test_save_location(self):
     '''
     this test confirms if the function works
@@ -167,7 +164,6 @@ class LocationTest(TestCase):
     '''
     self.new_location2.save_location()
     self.new_location2.delete_location()
-    
     locationnumber = len(Location.objects.all())
     self.assertTrue(locationnumber == 0)
     
