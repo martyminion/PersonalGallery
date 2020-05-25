@@ -143,5 +143,40 @@ class CategoryTest(TestCase):
     new_booze = Category.objects.get(name = "Booze")
     self.assertEqual(new_booze.name,"Booze")
 
+class LocationTest(TestCase):
+  '''
+  This class defines the test cases for the Category model
+  '''
+  def setUp(self):
+    '''
+    this function runs at the beginning of each test
+    '''
+    self.new_location2 = Location(city = "Nairobi", country = "Kenya", specific_locale = "Waterefrom Karen")
+  def test_save_location(self):
+    '''
+    this test confirms if the function works
+    '''
+    self.new_location2.save_location()
+    nairobi = Location.objects.get(city = "Nairobi")
+    self.assertEqual(nairobi,self.new_location2)
+    self.new_location2.delete()
 
+  def test_delete_location(self):
+    '''
+    this test checks if the item will be deleted
+    '''
+    self.new_location2.save_location()
+    self.new_location2.delete_location()
+    
+    locationnumber = len(Location.objects.all())
+    self.assertTrue(locationnumber == 0)
+    
+  def test_update_location(self):
+    '''
+    this test checks if the name is updated to new value
+    '''
+    self.new_location2.save_location()
+    self.new_location2.update_location("Naivas Supermarket")
+    new_locale = Location.objects.get(specific_locale = "Naivas Supermarket")
+    self.assertEqual(new_locale.specific_locale,"Naivas Supermarket")
 
