@@ -104,7 +104,6 @@ class Image(models.Model):
   '''
   This class defines the attributes of an image
   '''
-  image_url = models.CharField(max_length=100)
   name = models.CharField(max_length=50)
   description = models.CharField(max_length=100,null=True)
   locations = models.ForeignKey(Location, on_delete = models.CASCADE)

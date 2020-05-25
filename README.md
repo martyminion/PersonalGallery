@@ -108,7 +108,7 @@ The app can be found live on heroku
 
 ## Authors
 
-* **Martin Kimani** th)
+* **Martin Kimani** 
 
 
 ## License
