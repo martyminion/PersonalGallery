@@ -3,37 +3,12 @@
 {%block content%}
 {{block.super}}
 <div class="container text-center">
-
   <div class="row grid">
-    {%for result in results%}
+    {%for image in results%}
     <div class="grid_item col-md-4 col-xs-6 col-sm-6 col-lg-3">
-      <img src="{{result.picha_image.url}}" alt="result.name" class="imagesize">
-      <button type="button" class="btn " data-toggle="modal" data-target="#ScrollableModal">Expand</button>
-    </div>
-    <!-- Modal -->
-    <div class="modal fade" id="ScrollableModal" tabindex="-1" role="dialog"
-      aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalScrollableTitle">{{result.name}}</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <img src="{{result.picha_image.url}}" alt="image.name">
-            <p>{{result.description}}</p>
-            <p>{{result.categories}}</p>
-            <p>{{result.locations.specific_locale}}</p>
-            <p>{{result.locations}},{{image.locations.country}}</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <a class="btn " href="{%url 'copyUrl' result.id %}" id="copyimg">Share</a>
-          </div>
-        </div>
-      </div>
+      <img onclick="showModal('{{image.name}}','{{image.description}}','{{image.picha_image.url}}','{{image.locations.specific_locale}}','{{image.locations.city}}','{{image.locations.country}}','{{image.categories.name}}')"
+      class="image img-responsive" src="{{image.picha_image.url}}">
+      <a class="btn " href="{%url 'copyUrl' image.id %}" id="copyimg">Share</a>
     </div>
     {%endfor%}
   </div>
