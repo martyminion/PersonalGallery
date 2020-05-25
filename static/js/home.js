@@ -8,9 +8,12 @@ function showModal(imgname,imgdesc,imgurl,imglocsp,imglocct,imgloccntry,imgcat){
   $("#imgmdlocation").text(imglocct+","+imgloccntry)
   $("#imgmdcategory").text("Category: " + imgcat)
 }
-$("#copyimg").click(function(){
-  alert('image copied to clipboard')
-})
 
 
+$(document).ready(function()
+{
+  $("#copyimg").click(function(){
+    alert('image copied to clipboard')
+  })
 
+  });

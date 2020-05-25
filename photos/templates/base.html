@@ -13,6 +13,7 @@
   {%block styles%}
   {% bootstrap_css %}
   <link rel="stylesheet" href="{% static 'css/home.css'%}">
+  <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Pacifico&family=Piedra&family=Satisfy&family=Vidaloka&display=swap" rel="stylesheet">
   {%endblock%}
 </head>
 
@@ -32,10 +33,10 @@
       </div>
       <div class="modal-body">
         <img class="mod-img">
-        <p id="imgmddescription"></p>
-        <p id="imgmdcategory"></p>
-        <p id="imgmdlocationspecifc"></p>
-        <p id="imgmdlocation"></p>
+        <p class="modalp" id="imgmddescription"></p>
+        <p class="modalp" id="imgmdcategory"></p>
+        <p class="modalp" id="imgmdlocationspecifc"></p>
+        <p class="modalp" id="imgmdlocation"></p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -45,12 +46,13 @@
 </div>
 
   {%endblock%}
-  {%block scripts%}
+ 
+  <footer class="jumbotron text-center">Brought to you with love from the Live in Picture Team</footer>
+</body>
+{%block scripts%}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   {%bootstrap_javascript%}
   <script src="../../static/js/home.js"></script>
-  
   {%endblock%}
-</body>
 
 </html>

@@ -3,7 +3,7 @@
 {%block content%}
 {{block.super}}
 <div class="container text-center">
-  <h2>"Search results for {{search_term}}"</h2>
+  <h2 class="searchtitle">"Search results for {{search_term}}"</h2>
   <div class="row grid">
     {%if search_results%}
     {%for image in search_results%}

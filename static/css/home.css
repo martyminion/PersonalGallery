@@ -22,3 +22,21 @@ p{
 button{
   margin: 10px;
 }
+#imgmdtitle{
+  font-family: 'Satisfy', cursive;
+}
+
+.modalp{
+  font-family: 'Kaushan Script', cursive;
+}
+.searchtitle{
+  font-family: 'Vidaloka', serif;
+}
+.navbar-brand{
+  font-family: 'Pacifico', cursive;
+  font-size: 40px;
+}
+.navlink{
+  font-family: 'Pacifico', cursive;
+  font-size: 20px;
+}
